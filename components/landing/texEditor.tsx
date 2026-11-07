@@ -3,8 +3,8 @@
 import { useState } from "react"
 
 import { engineCopy } from "@/data/landing"
-import { texSource } from "@/data/resumes"
-import type { TexIndent, TexLine } from "@/types/resumes"
+import { compiledResume, texSource } from "@/data/resumes"
+import type { ExperienceBlock, SkillsBlock, TexIndent, TexLine } from "@/types/resumes"
 import { MaterialIcon } from "@/components/ui/materialIcon"
 import { cn } from "@/lib/utils"
 
@@ -33,7 +33,9 @@ export function TexEditor({ children }: TexEditorProps) {
             <span className="inline-block h-3 w-3 rounded-full bg-amber-400/80" />
             <span className="inline-block h-3 w-3 rounded-full bg-brand-400/80" />
           </div>
-          <span className="font-mono text-xs font-medium text-neutral-300">{engineCopy.filename}</span>
+          <span className="font-mono text-xs font-medium text-neutral-300">
+            {mode === "guided" ? "Guided form" : engineCopy.filename}
+          </span>
         </div>
         <div className="flex items-center rounded-xl border border-white/10 bg-white/5 p-1">
           {engineCopy.modes.map((item) => {
@@ -68,10 +70,17 @@ export function TexEditor({ children }: TexEditorProps) {
         </div>
       </div>
       <div className="grid min-h-[440px] grid-cols-1 lg:grid-cols-12">
-        <div className="overflow-x-auto border-b border-white/10 bg-[#0b0d0f] p-6 font-mono text-xs leading-relaxed text-neutral-300 lg:col-span-6 lg:border-r lg:border-b-0">
-          {texSource.map((line, index) => (
-            <TexLineView key={index} line={line} />
-          ))}
+        <div
+          className={cn(
+            "overflow-auto border-b border-white/10 bg-[#0b0d0f] p-6 lg:col-span-6 lg:border-r lg:border-b-0",
+            mode === "raw" && "font-mono text-xs leading-relaxed text-neutral-300",
+          )}
+        >
+          {mode === "raw" ? (
+            texSource.map((line, index) => <TexLineView key={index} line={line} />)
+          ) : (
+            <GuidedForm />
+          )}
         </div>
         <div className="flex flex-col justify-between bg-[#16191d] p-6 lg:col-span-6">{children}</div>
       </div>
@@ -84,6 +93,82 @@ export function TexEditor({ children }: TexEditorProps) {
         ))}
       </div>
     </div>
+  )
+}
+
+const experienceBlock = compiledResume.blocks.find(
+  (block): block is ExperienceBlock => block.kind === "experience",
+)
+const skillsBlock = compiledResume.blocks.find(
+  (block): block is SkillsBlock => block.kind === "skills",
+)
+
+type GuidedFields = {
+  name: string
+  contact: string
+  title: string
+  org: string
+  dates: string
+  bulletOne: string
+  bulletTwo: string
+  skills: string
+}
+
+function GuidedForm() {
+  const [fields, setFields] = useState<GuidedFields>({
+    name: compiledResume.name,
+    contact: compiledResume.contact,
+    title: experienceBlock?.title ?? "",
+    org: experienceBlock?.org ?? "",
+    dates: experienceBlock?.dates ?? "",
+    bulletOne: experienceBlock?.bullets[0] ?? "",
+    bulletTwo: experienceBlock?.bullets[1] ?? "",
+    skills: skillsBlock?.value ?? "",
+  })
+
+  function update(key: keyof GuidedFields, value: string) {
+    setFields((current) => ({ ...current, [key]: value }))
+  }
+
+  return (
+    <form className="space-y-3" onSubmit={(event) => event.preventDefault()}>
+      <Field label="Name" value={fields.name} onChange={(value) => update("name", value)} />
+      <Field label="Contact" value={fields.contact} onChange={(value) => update("contact", value)} />
+      <p className="pt-1 font-mono text-[11px] tracking-wide text-neutral-500 uppercase">
+        {experienceBlock?.heading ?? "Experience"}
+      </p>
+      <Field label="Title" value={fields.title} onChange={(value) => update("title", value)} />
+      <Field label="Organization" value={fields.org} onChange={(value) => update("org", value)} />
+      <Field label="Dates" value={fields.dates} onChange={(value) => update("dates", value)} />
+      <Field label="Bullet" value={fields.bulletOne} onChange={(value) => update("bulletOne", value)} />
+      <Field label="Bullet" value={fields.bulletTwo} onChange={(value) => update("bulletTwo", value)} />
+      <Field
+        label={skillsBlock?.label ?? "Skills"}
+        value={fields.skills}
+        onChange={(value) => update("skills", value)}
+      />
+    </form>
+  )
+}
+
+function Field({
+  label,
+  value,
+  onChange,
+}: {
+  label: string
+  value: string
+  onChange: (value: string) => void
+}) {
+  return (
+    <label className="block">
+      <span className="mb-1 block font-mono text-[11px] text-neutral-500">{label}</span>
+      <input
+        className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs text-neutral-100 outline-none focus:border-brand-400"
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+      />
+    </label>
   )
 }
 
