@@ -1,4 +1,4 @@
-import type { TemplateCardData, TemplatePreview } from "@/data/landing"
+import type { TemplateCardData, TemplatePreview } from "@/types/landing"
 
 type TemplateCardProps = {
   card: TemplateCardData
@@ -36,33 +36,36 @@ function TemplatePreviewSkeleton({ preview }: { preview: TemplatePreview }) {
     case "academic":
       return (
         <div className="space-y-3 opacity-60 blur-[0.5px] filter">
-          <div className="h-3 w-2/5 rounded bg-neutral-300" />
-          <div className="space-y-1.5 pt-2">
-            <div className="h-2 w-full rounded bg-neutral-200" />
-            <div className="h-2 w-5/6 rounded bg-neutral-200" />
-            <div className="h-2 w-4/6 rounded bg-neutral-200" />
+          <div className="flex flex-col items-center gap-1.5">
+            <div className="h-3 w-2/5 rounded bg-neutral-300" />
+            <div className="h-1.5 w-1/4 rounded bg-neutral-200" />
           </div>
           <div className="space-y-1.5 pt-2">
-            <div className="h-2 w-full rounded bg-neutral-200" />
-            <div className="h-2 w-3/4 rounded bg-neutral-200" />
+            <div className="h-2 w-3/5 rounded bg-neutral-300" />
+            <div className="ml-3 h-1.5 w-4/5 rounded bg-neutral-200" />
+          </div>
+          <div className="space-y-1.5 pt-1">
+            <div className="h-2 w-1/2 rounded bg-neutral-300" />
+            <div className="ml-3 h-1.5 w-3/4 rounded bg-neutral-200" />
           </div>
         </div>
       )
     case "staff":
       return (
         <div className="space-y-3 opacity-60 blur-[0.5px] filter">
-          <div className="flex justify-between">
-            <div className="h-3 w-1/3 rounded bg-neutral-300" />
-            <div className="h-3 w-1/4 rounded bg-brand-200" />
+          <div className="h-3 w-2/5 rounded bg-neutral-300" />
+          <div className="h-px w-full bg-neutral-200" />
+          <div className="space-y-1.5">
+            <div className="h-2 w-1/2 rounded bg-neutral-300" />
+            <div className="h-1.5 w-full rounded bg-neutral-200" />
+            <div className="h-1.5 w-full rounded bg-neutral-200" />
+            <div className="h-1.5 w-full rounded bg-neutral-200" />
           </div>
-          <div className="space-y-1.5 pt-2">
-            <div className="h-2 w-full rounded bg-neutral-200" />
-            <div className="h-2 w-11/12 rounded bg-neutral-200" />
-            <div className="h-2 w-4/5 rounded bg-neutral-200" />
-          </div>
-          <div className="space-y-1.5 pt-2">
-            <div className="h-2 w-full rounded bg-neutral-200" />
-            <div className="h-2 w-2/3 rounded bg-neutral-200" />
+          <div className="space-y-1.5">
+            <div className="h-2 w-2/5 rounded bg-neutral-300" />
+            <div className="h-1.5 w-full rounded bg-neutral-200" />
+            <div className="h-1.5 w-full rounded bg-neutral-200" />
+            <div className="h-1.5 w-full rounded bg-neutral-200" />
           </div>
         </div>
       )
@@ -70,13 +73,23 @@ function TemplatePreviewSkeleton({ preview }: { preview: TemplatePreview }) {
       return (
         <div className="space-y-3 opacity-60 blur-[0.5px] filter">
           <div className="h-3 w-2/5 rounded bg-neutral-300" />
-          <div className="grid grid-cols-2 gap-2 pt-2">
-            <div className="h-8 rounded-lg bg-neutral-100" />
-            <div className="h-8 rounded-lg bg-neutral-100" />
+          <div className="grid grid-cols-2 gap-2">
+            <div className="h-7 rounded-lg bg-neutral-100" />
+            <div className="h-7 rounded-lg bg-neutral-100" />
+            <div className="h-7 rounded-lg bg-neutral-100" />
+            <div className="h-7 rounded-lg bg-neutral-100" />
           </div>
-          <div className="space-y-1.5 pt-2">
-            <div className="h-2 w-full rounded bg-neutral-200" />
-            <div className="h-2 w-5/6 rounded bg-neutral-200" />
+          <div className="flex gap-2 pt-1">
+            <div className="w-1/4 space-y-1.5">
+              <div className="h-1.5 w-full rounded bg-neutral-300" />
+              <div className="h-1.5 w-full rounded bg-neutral-300" />
+              <div className="h-1.5 w-3/4 rounded bg-neutral-300" />
+            </div>
+            <div className="flex-1 space-y-1.5">
+              <div className="h-2 w-2/3 rounded bg-neutral-300" />
+              <div className="h-1.5 w-full rounded bg-neutral-200" />
+              <div className="h-1.5 w-5/6 rounded bg-neutral-200" />
+            </div>
           </div>
         </div>
       )

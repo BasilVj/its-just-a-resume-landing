@@ -1,4 +1,5 @@
-import { heroResume, type StackChip } from "@/data/resumes"
+import { heroResume } from "@/data/resumes"
+import type { StackChip } from "@/types/resumes"
 import { MaterialIcon } from "@/components/ui/materialIcon"
 import { cn } from "@/lib/utils"
 

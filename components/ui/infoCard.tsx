@@ -1,4 +1,4 @@
-import type { InfoCardData, InfoIconKind } from "@/data/landing"
+import type { InfoCardData, InfoIconKind } from "@/types/landing"
 import { MaterialIcon } from "@/components/ui/materialIcon"
 
 const icons = {

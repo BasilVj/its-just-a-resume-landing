@@ -1,49 +1,10 @@
-export type NavLink = {
-  label: string
-  href: "#engine-demo" | "#templates" | "#pricing"
-}
-
-export type InfoIconKind = "vault" | "shield" | "history"
-
-export type InfoCardData = {
-  icon: InfoIconKind
-  kicker: string
-  title: string
-  body: string
-  statLabel: string
-  statValue: string
-}
-
-export type TemplatePreview = "academic" | "staff" | "executive"
-
-export type TemplateCardData = {
-  badge: string
-  title: string
-  body: string
-  comingSoon: string
-  lockLabel: string
-  preview: TemplatePreview
-}
-
-export type PricingTone = "light" | "dark"
-
-export type PricingPlanData = {
-  tone: PricingTone
-  name: string
-  badge: string
-  price: string
-  period: string
-  description: string
-  features: readonly [string, ...string[]]
-  cta: string
-}
+import type { InfoCardData, NavLink, PricingPlanData, TemplateCardData } from "@/types/landing"
 
 export const landingNav = {
   wordmark: "it's just a resume",
   honesty: "(honestly)",
   signIn: "Sign In",
   startFree: "Start Free",
-  startFreeNote: "— 10 Resumes",
   links: [
     { label: "How it works", href: "#engine-demo" },
     { label: "Templates", href: "#templates" },
@@ -54,7 +15,6 @@ export const landingNav = {
   honesty: string
   signIn: string
   startFree: string
-  startFreeNote: string
   links: readonly NavLink[]
 }
 
@@ -140,14 +100,14 @@ export const templatesCopy = {
   droppingSoon: "DROPPING SOON",
   headline: "Curated Resume Templates.",
   body: "We're obsessing over every point of line-height and margin spacing so you never have to nudge boxes in Figma again.",
-  testingNote: "In private testing with tech talent leads",
+  testingNote: "In private testing",
   cards: [
     {
       badge: "BibTeX Ready",
       title: "Minimal Academic",
       body: "Perfect for researchers, ML fellows, and postdocs.",
       comingSoon: "COMING SOON",
-      lockLabel: "Dropping in Vault v2.5",
+      lockLabel: "Dropping soon",
       preview: "academic",
     },
     {
@@ -155,7 +115,7 @@ export const templatesCopy = {
       title: "Staff Engineer Clean",
       body: "Maximum information density without visual clutter.",
       comingSoon: "COMING SOON",
-      lockLabel: "Dropping in Vault v2.5",
+      lockLabel: "Dropping soon",
       preview: "staff",
     },
     {
@@ -163,7 +123,7 @@ export const templatesCopy = {
       title: "Product & Tech Leader",
       body: "Highlight metrics, acquisitions, and team scale effortlessly.",
       comingSoon: "COMING SOON",
-      lockLabel: "Dropping in Vault v2.5",
+      lockLabel: "Dropping soon",
       preview: "executive",
     },
   ],
@@ -221,7 +181,7 @@ export const pricingCopy = {
       name: "Pro Architect",
       badge: "FOR POWER USERS",
       price: "$5",
-      period: "/ monthly",
+      period: "/ yearly",
       description:
         "For contractors, managers, and designers who manage high-frequency application variations.",
       features: [
@@ -231,7 +191,7 @@ export const pricingCopy = {
         "Auto BibTeX citation & publication ingestion",
         "Early VIP access to all new templates",
       ],
-      cta: "Upgrade to Pro — $5/mo",
+      cta: "Upgrade to Pro — $5/yr",
     },
   ],
   closing: {

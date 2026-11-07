@@ -6,7 +6,6 @@ export function SiteFooter() {
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <div className="flex flex-col items-center justify-between gap-4 font-mono text-xs text-neutral-500 md:flex-row">
           <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-brand-500" />
             <span>{footerCopy.mark}</span>
           </div>
           <div className="flex items-center gap-4 text-neutral-400">

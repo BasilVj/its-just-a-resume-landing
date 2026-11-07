@@ -1,4 +1,5 @@
-import { compiledResume, type ResumeBlock } from "@/data/resumes"
+import { compiledResume } from "@/data/resumes"
+import type { ResumeBlock } from "@/types/resumes"
 
 export function RenderedResume() {
   const resume = compiledResume

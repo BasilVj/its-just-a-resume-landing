@@ -1,4 +1,4 @@
-import type { PricingPlanData, PricingTone } from "@/data/landing"
+import type { PricingPlanData, PricingTone } from "@/types/landing"
 import { cn } from "@/lib/utils"
 
 const shells = {

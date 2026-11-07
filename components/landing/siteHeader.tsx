@@ -6,7 +6,7 @@ export function SiteHeader() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 md:px-8">
         <div className="flex items-center gap-3">
           <a className="group flex items-center gap-1.5 tracking-tight sm:gap-2" href="#">
-            <span className="text-base font-extrabold tracking-tight whitespace-nowrap text-neutral-900 sm:text-xl">
+            <span className="text-base font-extrabold leading-none tracking-tight whitespace-nowrap text-neutral-900 sm:text-xl">
               {landingNav.wordmark}
               <span className="text-brand-500">.</span>
             </span>
@@ -39,7 +39,6 @@ export function SiteHeader() {
               href="#"
             >
               <span>{landingNav.startFree}</span>
-              <span className="hidden text-xs opacity-80 sm:inline">{landingNav.startFreeNote}</span>
             </a>
           </div>
         </div>

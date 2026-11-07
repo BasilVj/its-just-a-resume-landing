@@ -3,7 +3,8 @@
 import { useState } from "react"
 
 import { engineCopy } from "@/data/landing"
-import { texSource, type TexIndent, type TexLine } from "@/data/resumes"
+import { texSource } from "@/data/resumes"
+import type { TexIndent, TexLine } from "@/types/resumes"
 import { MaterialIcon } from "@/components/ui/materialIcon"
 import { cn } from "@/lib/utils"
 
