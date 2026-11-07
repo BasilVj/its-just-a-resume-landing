@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# it's just a resume. (honestly)
 
-## Getting Started
+Marketing site for a resume builder that hides LaTeX behind a simple editor. The page sells crisp, ATS-friendly resumes: a guided form when you want ease, a `.tex` editor when you want the source, and a free vault for the first 10 resumes.
 
-First, run the development server:
+This repository is the landing page only. Sign-in, checkout, and template notifications are presented in the UI and are not wired to a backend.
+
+## Page
+
+| Section | What it shows |
+| --- | --- |
+| Pitch | Headline, sample resume, and the free-tier promise |
+| Dual engine | Raw `.tex` beside a live rendered preview |
+| ATS | Why the export stays parser-friendly |
+| Templates | Upcoming layouts, with a local email capture form |
+| Pricing | Free forever, and Pro at $5 / year |
+
+Copy for those sections lives in [`data/landing.ts`](data/landing.ts). Sample resume and TeX source live in [`data/resumes.ts`](data/resumes.ts). Shared types are in [`types/`](types/).
+
+## Stack
+
+- [Next.js](https://nextjs.org) 16 (App Router)
+- React 19
+- TypeScript
+- Tailwind CSS 4
+
+## Getting started
+
+Requires Node.js 20+.
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Start the dev server |
+| `npm run build` | Production build |
+| `npm run start` | Serve the production build |
+| `npm run lint` | Run ESLint |
 
-## Learn More
+## Project layout
 
-To learn more about Next.js, take a look at the following resources:
+```text
+app/                  home page and root layout
+components/landing/   page sections
+components/ui/        shared UI
+data/                 page copy and sample resume content
+types/                types for that content
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The home page in [`app/page.tsx`](app/page.tsx) renders the header, the five sections, and the footer in order.
