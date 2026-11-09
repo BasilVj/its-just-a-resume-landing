@@ -209,6 +209,6 @@ export const pricingCopy = {
 }
 
 export const footerCopy = {
-  mark: "© it's just a resume company. built for humans who just want a job.",
+  mark: "© it's just a resume. built for humans who just want a job.",
   notes: ["LaTeX under the hood", "Zero compiler errors"],
 } as const

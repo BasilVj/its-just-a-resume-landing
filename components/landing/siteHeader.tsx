@@ -28,12 +28,7 @@ export function SiteHeader() {
             ))}
           </nav>
           <div className="flex items-center gap-3">
-            <a
-              className="hidden px-3 py-1.5 text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900 sm:inline-block"
-              href="#"
-            >
-              {landingNav.signIn}
-            </a>
+           
             <a
               className="flex shrink-0 items-center gap-1.5 rounded-xl bg-brand-500 px-3 py-1.5 text-sm font-medium whitespace-nowrap text-white shadow-sm shadow-brand-500/20 transition-all hover:bg-brand-600 hover:shadow-brand-500/30 sm:px-4 sm:py-2"
               href="#"
