@@ -98,7 +98,7 @@ export const texSource = [
   { kind: "command", indent: "none", command: "\\end", text: "{document}" },
 ] as const satisfies readonly TexLine[]
 
-export const compiledResume = {
+export const compiledResume: CompiledResume = {
   name: "David K. Vance",
   contact: "San Francisco, CA • d.vance@mit.edu • github.com/dvance",
   blocks: [
@@ -122,4 +122,4 @@ export const compiledResume = {
   ],
   renderedLabel: "Rendered in 388ms",
   fitLabel: "100% 1-Page Fit",
-} satisfies CompiledResume
+}
